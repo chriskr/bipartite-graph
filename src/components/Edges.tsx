@@ -1,6 +1,6 @@
-import React from 'react';
-import { Graph } from './types';
-import { Svg } from './Atoms';
+import React from "react";
+import { Graph } from "./types";
+import { Svg } from "./Atoms";
 
 const DELTA_HEIGHT = 48;
 const SVG_WIDTH = 120;
@@ -21,10 +21,12 @@ const Path = ({
   y1: number;
   key: number;
 }) => {
-  const d = `M ${scaledPoint(x0, y0)} C ${scaledPoint(
-    x0 + DELAT_CONTROL_POINT,
-    y0
-  )} ${scaledPoint(x1 - DELAT_CONTROL_POINT, y1)} ${scaledPoint(x1, y1)}`;
+  const d = `M ${scaledPoint(x0, y0)} C ${
+    scaledPoint(
+      x0 + DELAT_CONTROL_POINT,
+      y0,
+    )
+  } ${scaledPoint(x1 - DELAT_CONTROL_POINT, y1)} ${scaledPoint(x1, y1)}`;
   return <path d={d} />;
 };
 
@@ -38,11 +40,11 @@ export const Edges = ({
   redNodesGraph: Graph;
 }) => {
   const redNodesIndex = Object.fromEntries(
-    redNodes.map((node, index) => [node, index])
+    redNodes.map((node, index) => [node, index]),
   );
 
   const blueNodesIndex = Object.fromEntries(
-    blueNodes.map((node, index) => [node, index])
+    blueNodes.map((node, index) => [node, index]),
   );
 
   const points = Array.from(redNodesGraph).flatMap(([source, targets]) =>
@@ -68,9 +70,10 @@ export const Edges = ({
         fill="none"
         transform={`translate(0, ${(DELTA_HEIGHT - 16) / 2 - 0.5})`}
       >
-        {points.map((pointsDict, index) => (
-          <Path {...pointsDict} key={index} />
-        ))}
+        {points.map((
+          pointsDict,
+          index,
+        ) => <Path {...pointsDict} key={index} />)}
       </g>
     </Svg>
   );

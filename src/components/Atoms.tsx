@@ -1,14 +1,10 @@
-import styled from 'styled-components';
-import { Color } from './types';
-import github from './github.svg';
-import wiking from './wiking.svg';
-import logo from './logo.svg';
-import home from './home.svg';
+import styled from "styled-components";
+import { Color } from "./types";
 
 export const Center = styled.div`
   align-items: center;
   background-color: rgb(248, 240, 231);
-  background-image: url(${logo});
+  background-image: url("/logo.svg");
   background-position: center center;
   background-repeat: no-repeat;
   box-sizing: border-box;
@@ -24,7 +20,7 @@ export const Center = styled.div`
 
 export const H1 = styled.h1`
   color: hsla(0, 0%, 0%, 0.33);
-  background-image: url(${wiking});
+  background-image: url("/wiking.svg");
   background-position: 50% 8px;
   background-repeat: no-repeat;
   background-size: 48px;
@@ -104,8 +100,8 @@ export const NodeList = styled.ul`
 `;
 
 const cssColor = {
-  [Color.BLUE]: 'hsl(220, 100%, 70%)',
-  [Color.RED]: 'hsl(15, 100%, 65%)',
+  [Color.BLUE]: "hsl(220, 100%, 70%)",
+  [Color.RED]: "hsl(15, 100%, 65%)",
 };
 
 export const Node = styled.li<{ nodeColor: Color }>`
@@ -159,9 +155,9 @@ export const IconLink = styled.a`
 `;
 
 export const RepoLink = styled(IconLink)`
-  background-image: url(${github});
+  background-image: url("/github.svg");
 `;
 
 export const HomeLink = styled(IconLink)`
-  background-image: url(${home});
+  background-image: url("/home.svg");
 `;

@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import {
   Textarea,
-  TextareaClone,
-  TEXTAREA_PADDING,
   TEXTAREA_HEIGHT,
+  TEXTAREA_PADDING,
+  TextareaClone,
   TextareaContainer,
-} from './Atoms';
+} from "./Atoms";
 
 export const ExpandingTextarea = ({
   onChange,
@@ -18,7 +18,7 @@ export const ExpandingTextarea = ({
   const textareaClone = useRef<HTMLTextAreaElement>(null);
 
   const onChangeInner: React.ChangeEventHandler<HTMLTextAreaElement> = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
     onChange(event);
     if (!textareaClone.current) {
@@ -27,7 +27,7 @@ export const ExpandingTextarea = ({
     textareaClone.current.value = event.target.value;
     const targetHeight = Math.max(
       textareaClone.current.scrollHeight - 2 * TEXTAREA_PADDING,
-      TEXTAREA_HEIGHT
+      TEXTAREA_HEIGHT,
     );
     if (targetHeight !== height) {
       setHeight(targetHeight);
@@ -38,13 +38,13 @@ export const ExpandingTextarea = ({
     <>
       <TextareaClone ref={textareaClone} />
       <TextareaContainer targetHeight={height}>
-        <span>{'{'}</span>
+        <span>{"{"}</span>
         <Textarea
           onChange={onChangeInner}
           placeholder={placeholder}
           targetHeight={height}
         />
-        <span>{'}'}</span>
+        <span>{"}"}</span>
       </TextareaContainer>
     </>
   );

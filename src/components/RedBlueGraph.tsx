@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { getRedBlueSubgraphs } from './red-blue';
-import { Color, ColorMap, Graph } from './types';
-import { parseRawGraph } from './parseRawGraph';
+import React, { useState } from "react";
+import { getRedBlueSubgraphs } from "./red-blue";
+import { Color, ColorMap, Graph } from "./types";
+import { parseRawGraph } from "./parseRawGraph";
 import {
+  BipartiteGraph,
   Center,
+  Error,
   H1,
   H2,
-  Error,
-  BipartiteGraph,
-  PLACEHODER_TEXT,
-  RepoLink,
   HomeLink,
   Navigation,
-} from './Atoms';
-import { Part } from './Part';
-import { Edges } from './Edges';
-import { ExpandingTextarea } from './ExpandingTextarea';
+  PLACEHODER_TEXT,
+  RepoLink,
+} from "./Atoms";
+import { Part } from "./Part";
+import { Edges } from "./Edges";
+import { ExpandingTextarea } from "./ExpandingTextarea";
 
 const RedBlueGraph = () => {
   const [{ graph, error, colorMap }, setState] = useState<{
     graph: Graph;
     error: string;
     colorMap: ColorMap;
-  }>({ graph: new Map(), error: '', colorMap: new Map() });
+  }>({ graph: new Map(), error: "", colorMap: new Map() });
 
   const redNodes = Array.from(colorMap.entries())
     .filter(([, color]) => color === Color.RED)
@@ -35,7 +35,7 @@ const RedBlueGraph = () => {
   const redNodesSet = new Set(redNodes);
 
   const redNodesGraph = new Map(
-    Array.from(graph).filter(([node]) => redNodesSet.has(node))
+    Array.from(graph).filter(([node]) => redNodesSet.has(node)),
   );
 
   return (
@@ -49,7 +49,7 @@ const RedBlueGraph = () => {
           setState({ graph, error, colorMap });
         }}
         placeholder={PLACEHODER_TEXT}
-      ></ExpandingTextarea>
+      />
       {error && <Error>{error}</Error>}
       {!error && redNodes.length > 0 && (
         <>
